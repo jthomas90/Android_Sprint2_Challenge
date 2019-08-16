@@ -27,19 +27,30 @@ class MainActivity : AppCompatActivity() {
 
         //triggering notification and intent taking orderList and taking it to Messaging app
         share_button.setOnClickListener {
-            saverNotification()
+
+            saverNotification(getOrderList())
+
             val shareIntent: Intent = Intent().apply {
                 action = Intent.ACTION_SEND
-                putExtra(Intent.EXTRA_TEXT, () )//this will hold my orderlist
+                putExtra(Intent.EXTRA_TEXT,"This is my text to send." )//this will hold my orderlist
                 type = "text/plain"
             }
             startActivity(shareIntent)
 
-
         }
 
-
     }
+
+    fun getOrderList() : String {
+         var orderedGroceries = ""
+        for (food in  GrocerlistRepo.grocerylist){
+            if (food.isShare) orderedGroceries += "${food.groceries}"
+        }
+
+        return orderedGroceries
+    }
+
+
 
     fun saverNotification(orderList: String) {
         val channelId = "${this.packageName}.grocerychannel"
@@ -60,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
             .setPriority(NotificationManager.IMPORTANCE_HIGH)
             .setSmallIcon(android.R.drawable.ic_dialog_alert)
-            .setContentTitle("Confimation")
+            .setContentTitle("Confirmation")
             .setContentText("Order Has Been Placed")
             .setAutoCancel(true)
         notificationManager.notify(10, notificationBuilder.build())
