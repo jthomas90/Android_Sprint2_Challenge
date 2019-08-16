@@ -24,7 +24,7 @@ class ShoppingListAdapter (val groceryList: MutableList<ShoppingListModel>) : Re
         val pickedItems = groceryList[position]
         holder.bindModel(pickedItems)
 
-        holder.shoppongItemParent.setOnClickListener {
+        holder.shoppingItemParent.setOnClickListener {
             pickedItems.isShare = !pickedItems.isShare
             notifyItemChanged(position)
         }
@@ -33,16 +33,16 @@ class ShoppingListAdapter (val groceryList: MutableList<ShoppingListModel>) : Re
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val shoppingImageView: ImageView = view.grocery_image_view
         val shoppingNameView: TextView = view.grocery_name_view
-        val shoppongItemParent: LinearLayout = view. grocery_item_parent
+        val shoppingItemParent: LinearLayout = view. grocery_item_parent
 
 
         fun bindModel(pickedItems: ShoppingListModel) {
             shoppingImageView.setImageResource(pickedItems.imageId)
             shoppingNameView.text = pickedItems.groceries
             if (pickedItems.isShare)
-                shoppongItemParent.setBackgroundColor(ContextCompat.getColor(itemView.context,R.color.Green))
+                shoppingItemParent.setBackgroundColor(ContextCompat.getColor(itemView.context,R.color.colorPrimary))
             else
-                shoppongItemParent.setBackgroundColor(ContextCompat.getColor(itemView.context,R.color.White))
+                shoppingItemParent.setBackgroundColor(ContextCompat.getColor(itemView.context,R.color.White))
 
 
         }
