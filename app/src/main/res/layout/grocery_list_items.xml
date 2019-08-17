@@ -1,0 +1,25 @@
+<LinearLayout
+        android:id="@+id/grocery_item_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <ImageView
+                android:id="@+id/grocery_image_view"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:src="@drawable/almond"
+                />
+
+        <TextView
+                android:id="@+id/grocery_name_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:text="Almond"
+
+                android:layout_gravity="center_vertical"/>
+
+    </LinearLayout>
+
